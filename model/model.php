@@ -73,3 +73,17 @@ function findById($id)
 
     return $pdo_statement->fetch();
 }
+
+function deleteById($id)
+{
+    $pdo_conn = getConnection();
+
+    $sql = 'DELETE FROM article WHERE id = :id';
+    $pdo_statement = $pdo_conn->prepare($sql);
+    $pdo_statement->bindValue( ":id",$id);
+
+
+    return $pdo_statement->execute();
+
+
+}
